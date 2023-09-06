@@ -35,7 +35,7 @@
 			<h3 v-if="winner === 'monster'">You lost!</h3>
 			<h3 v-else-if="winner === 'player'">You won!</h3>
 			<h3 v-else>It's a draw</h3>
-			<button>Restart New Game</button>
+			<button @click="restart">Restart New Game</button>
 		</section>
 
 		<section id="controls" v-else>
@@ -47,7 +47,7 @@
 				SPECIAL ATTACK
 			</button>
 			<button @click="heal">HEAL</button>
-			<button>SURRENDER</button>
+			<button @click="surrender">SURRENDER</button>
 		</section>
 
 		<section
@@ -122,6 +122,17 @@
 				else this.playerHealth += healValue;
 				this.attackPlayer();
 			},
+			surrender()
+			{
+				this.winner = 'monster';
+			},
+			restart()
+			{
+				this.playerHealth =  100;
+				this.monsterHealth =  100;
+				this.currentRound =  0;
+				this.winner =  null;
+			}
 		},
 	};
 </script>
