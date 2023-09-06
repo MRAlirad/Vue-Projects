@@ -30,7 +30,10 @@
 			</div>
 		</section>
 
-		<section class="container" v-if="winner">
+		<section
+			class="container"
+			v-if="winner"
+		>
 			<h2>Game Over!</h2>
 			<h3 v-if="winner === 'monster'">You lost!</h3>
 			<h3 v-else-if="winner === 'player'">You won!</h3>
@@ -38,7 +41,10 @@
 			<button @click="restart">Restart New Game</button>
 		</section>
 
-		<section id="controls" v-else>
+		<section
+			id="controls"
+			v-else
+		>
 			<button @click="attackMonster">ATTACK</button>
 			<button
 				@click="specialAttackMonster"
@@ -55,7 +61,22 @@
 			class="container"
 		>
 			<h2>Battle Log</h2>
-			<ul></ul>
+			<ul>
+				<li
+					v-for="logMessage in logMessages"
+					:key="logMessage.id"
+				>
+					<span :class="{ 'log--player': logMessage.who === 'player', 'log--monster': logMessage.who === 'monster' }">{{ logMessage.who === 'player' ? 'player' : 'monster' }}</span>
+					<span v-if="logMessage.what === 'heal'">
+						heals himself for
+						<span class="log-heal">{{ logMessage.value }}</span>
+					</span>
+					<span v-else>
+						attacks and deals
+						<span class="log--damage">{{ logMessage.value }}</span>
+					</span>
+				</li>
+			</ul>
 		</section>
 	</div>
 </template>
@@ -73,6 +94,7 @@
 				monsterHealth: 100,
 				currentRound: 0,
 				winner: null,
+				logMessages: [],
 			};
 		},
 		watch: {
@@ -103,16 +125,19 @@
 				this.currentRound++;
 				const attackValue = getRandomValue(5, 12);
 				this.monsterHealth -= attackValue;
+				this.addLogMessage('player', 'attack', attackValue);
 				this.attackPlayer();
 			},
 			attackPlayer() {
 				const attackValue = getRandomValue(8, 15);
 				this.playerHealth -= attackValue;
+				this.addLogMessage('monster', 'attack', attackValue);
 			},
 			specialAttackMonster() {
 				this.currentRound++;
 				const attackValue = getRandomValue(10, 25);
 				this.monsterHealth -= attackValue;
+				this.addLogMessage('player', 'attack', attackValue);
 				this.attackPlayer();
 			},
 			heal() {
@@ -120,36 +145,32 @@
 				const healValue = getRandomValue(8, 20);
 				if (this.playerHealth + healValue > 100) this.playerHealth = 100;
 				else this.playerHealth += healValue;
+				this.addLogMessage('player', 'heal', healValue);
 				this.attackPlayer();
 			},
-			surrender()
-			{
+			surrender() {
 				this.winner = 'monster';
 			},
-			restart()
-			{
-				this.playerHealth =  100;
-				this.monsterHealth =  100;
-				this.currentRound =  0;
-				this.winner =  null;
-			}
+			restart() {
+				this.playerHealth = 100;
+				this.monsterHealth = 100;
+				this.currentRound = 0;
+				this.winner = null;
+				this.logMessages = [];
+			},
+			addLogMessage(who, what, value) {
+				this.logMessages.unshift({
+					id: Date.now(),
+					who,
+					what,
+					value,
+				});
+			},
 		},
 	};
 </script>
 
 <style scoped>
-	* {
-		box-sizing: border-box;
-	}
-
-	html {
-		font-family: 'Jost', sans-serif;
-	}
-
-	body {
-		margin: 0;
-	}
-
 	header {
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 		padding: 0.5rem;
