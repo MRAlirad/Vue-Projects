@@ -1,26 +1,23 @@
 <template>
 	<form @submit.prevent="submitData">
-		<div>
-			<label>Name</label>
-			<input
-				type="text"
-				v-model="enteredName"
-			/>
-		</div>
-		<div>
-			<label>Phone</label>
-			<input
-				type="tel"
-				v-model="enteredPhone"
-			/>
-		</div>
-		<div>
-			<label>E-Mail</label>
-			<input
-				type="email"
-				v-model="enteredEmail"
-			/>
-		</div>
+		<Input
+			label="Name"
+			type="text"
+			:model="enteredName"
+			@update:model="value => (enteredName = value)"
+		/>
+		<Input
+			label="Phone"
+			type="tel"
+			:model="enteredPhone"
+			@update:model="value => (enteredPhone = value)"
+		/>
+		<Input
+			label="Mail"
+			type="email"
+			:model="enteredEmail"
+			@update:model="value => (enteredEmail = value)"
+		/>
 		<div>
 			<Button text="add contact" />
 		</div>
@@ -29,10 +26,12 @@
 
 <script>
 	import Button from './Button.vue';
+	import Input from './Input.vue';
 	export default {
 		name: 'AddNewFriend',
 		components: {
 			Button,
+			Input,
 		},
 		emits: ['add-contact'],
 		data() {
@@ -54,9 +53,9 @@
 					phone: this.enteredPhone,
 				});
 
-                this.enteredName = '';
-                this.enteredEmail = '';
-                this.enteredPhone = '';
+				this.enteredName = '';
+				this.enteredEmail = '';
+				this.enteredPhone = '';
 			},
 		},
 	};
@@ -74,15 +73,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-	}
-	input {
-		font: inherit;
-		padding: 0.15rem;
-	}
-	label {
-		font-weight: bold;
-		margin-right: 1rem;
-		width: 7rem;
-		display: inline-block;
 	}
 </style>
