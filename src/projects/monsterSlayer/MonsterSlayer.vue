@@ -30,7 +30,15 @@
 			</div>
 		</section>
 
-		<section id="controls">
+		<section class="container" v-if="winner">
+			<h2>Game Over!</h2>
+			<h3 v-if="winner === 'monster'">You lost!</h3>
+			<h3 v-else-if="winner === 'player'">You won!</h3>
+			<h3 v-else>It's a draw</h3>
+			<button>Restart New Game</button>
+		</section>
+
+		<section id="controls" v-else>
 			<button @click="attackMonster">ATTACK</button>
 			<button
 				@click="specialAttackMonster"
@@ -64,7 +72,18 @@
 				playerHealth: 100,
 				monsterHealth: 100,
 				currentRound: 0,
+				winner: null,
 			};
+		},
+		watch: {
+			playerHealth(value) {
+				if (value <= 0 && this.monsterHealth <= 0) this.winner = 'draw';
+				else if (value < 0) this.winner = 'monster';
+			},
+			monsterHealth(value) {
+				if (value <= 0 && this.playerHealth <= 0) this.winner = 'draw';
+				else if (value < 0) this.winner = 'player';
+			},
 		},
 		computed: {
 			monsterBarStyles() {
