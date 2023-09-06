@@ -38,22 +38,43 @@
 			<h3 v-if="winner === 'monster'">You lost!</h3>
 			<h3 v-else-if="winner === 'player'">You won!</h3>
 			<h3 v-else>It's a draw</h3>
-			<button @click="restart">Restart New Game</button>
+			<button
+				class="btn"
+				@click="restart"
+			>
+				Restart New Game
+			</button>
 		</section>
 
 		<section
 			id="controls"
 			v-else
 		>
-			<button @click="attackMonster">ATTACK</button>
 			<button
+				class="btn"
+				@click="attackMonster"
+			>
+				ATTACK
+			</button>
+			<button
+				class="btn"
 				@click="specialAttackMonster"
 				:disabled="mayUseSpecialAttack"
 			>
 				SPECIAL ATTACK
 			</button>
-			<button @click="heal">HEAL</button>
-			<button @click="surrender">SURRENDER</button>
+			<button
+				class="btn"
+				@click="heal"
+			>
+				HEAL
+			</button>
+			<button
+				class="btn"
+				@click="surrender"
+			>
+				SURRENDER
+			</button>
 		</section>
 
 		<section
@@ -69,7 +90,7 @@
 					<span :class="{ 'log--player': logMessage.who === 'player', 'log--monster': logMessage.who === 'monster' }">{{ logMessage.who === 'player' ? 'player' : 'monster' }}</span>
 					<span v-if="logMessage.what === 'heal'">
 						heals himself for
-						<span class="log-heal">{{ logMessage.value }}</span>
+						<span class="log--heal">{{ logMessage.value }}</span>
 					</span>
 					<span v-else>
 						attacks and deals
@@ -221,7 +242,7 @@
 		justify-content: center;
 	}
 
-	button {
+	.btn {
 		font: inherit;
 		border: 1px solid #88005b;
 		background-color: #88005b;
@@ -234,18 +255,18 @@
 		box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 	}
 
-	button:focus {
+	.btn:focus {
 		outline: none;
 	}
 
-	button:hover,
-	button:active {
+	.btn:hover,
+	.btn:active {
 		background-color: #af0a78;
 		border-color: #af0a78;
 		box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
 	}
 
-	button:disabled {
+	.btn:disabled {
 		background-color: #ccc;
 		border-color: #ccc;
 		box-shadow: none;
@@ -257,6 +278,8 @@
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		max-height: 300px;
+		overflow-y: auto;
 	}
 
 	#log li {
