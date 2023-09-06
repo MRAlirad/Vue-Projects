@@ -3,6 +3,7 @@
 		<header>
 			<h1>My Friends</h1>
 		</header>
+		<AddNewFriend @add-contact="addContact" />
 		<div class="contact-segment">
 			<ContactInfo
 				v-for="friend in friends"
@@ -15,24 +16,26 @@
 </template>
 
 <script>
+	import AddNewFriend from './AddNewFriend.vue';
 	import ContactInfo from './ContactInfo.vue';
 
 	export default {
 		name: 'FriendContact',
 		components: {
+			AddNewFriend,
 			ContactInfo,
 		},
 		data() {
 			return {
 				friends: [
 					{
-						id: 123465789,
+						id: Math.random(),
 						name: 'Manuel Lorenz',
 						phone: '01234567890',
 						email: 'manuel@localhost.com',
 					},
 					{
-						id: 987654321,
+						id: Math.random(),
 						name: 'Julie Jones',
 						phone: '098765442121',
 						email: 'julie@localhost.com',
@@ -41,6 +44,14 @@
 			};
 		},
 		methods: {
+			addContact({ name, phone, email }) {
+				this.friends.push({
+					id: Date.now(),
+					name,
+					phone,
+					email,
+				});
+			},
 			deleteContact(id) {
 				if (confirm('are you sure')) this.friends = this.friends.filter(friend => friend.id !== id);
 			},
@@ -61,26 +72,10 @@
 		max-width: 40rem;
 	}
 
-	.section form {
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-		margin: 1rem auto;
-		border-radius: 10px;
-		padding: 1rem;
-		text-align: center;
-		width: 90%;
-		max-width: 40rem;
-	}
-	.section input {
-		font: inherit;
-		padding: 0.15rem;
-	}
-	.section label {
-		font-weight: bold;
-		margin-right: 1rem;
-		width: 7rem;
-		display: inline-block;
-	}
-	.section form div {
-		margin: 1rem 0;
+	.contact-segment {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin: 0 5%;
+		gap: 25px;
 	}
 </style>
