@@ -4,7 +4,7 @@
 			<h1>My Friends</h1>
 		</header>
 		<div class="contact-container">
-			<Contactt
+			<Contact
 				v-for="friend in friends"
 				:key="friend.id"
 				:contactInfo="friend"
@@ -14,11 +14,11 @@
 </template>
 
 <script>
-	import Contactt from './Contactt.vue';
+	import Contact from './Contact.vue';
 	export default {
-		name: 'FriendContactt',
+		name: 'FriendContact',
 		components: {
-			Contactt,
+			Contact,
 		},
 		data() {
 			return {

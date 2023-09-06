@@ -3,11 +3,11 @@
 		<h2 class="title">{{ contactInfo.name }}</h2>
 		<button class="btn">Show Details</button>
 		<div class="contact-info">
-			<ContactItemm
+			<ContactItem
 				name="Phone"
 				:info="contactInfo.phone"
 			/>
-			<ContactItemm
+			<ContactItem
 				name="Email"
 				:info="contactInfo.email"
 			/>
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-	import ContactItemm from './ContactItemm.vue';
+	import ContactItem from './ContactItem.vue';
 
 	export default {
-		name: 'Contactt',
+		name: 'Contact',
 		components: {
-			ContactItemm,
+			ContactItem,
 		},
 		props: {
 			contactInfo: Object,
