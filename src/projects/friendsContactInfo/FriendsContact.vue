@@ -3,11 +3,12 @@
 		<header>
 			<h1>My Friends</h1>
 		</header>
-		<div class="contact-container">
+		<div class="contact-segment">
 			<ContactInfo
 				v-for="friend in friends"
 				:key="friend.id"
 				:contactInfo="friend"
+				@delete="deleteContact"
 			/>
 		</div>
 	</section>
@@ -38,6 +39,11 @@
 					},
 				],
 			};
+		},
+		methods: {
+			deleteContact(id) {
+				if (confirm('are you sure')) this.friends = this.friends.filter(friend => friend.id !== id);
+			},
 		},
 	};
 </script>
