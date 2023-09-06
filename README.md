@@ -1,4 +1,4 @@
-# Vue-Projects
+# Vue-Mini-Projects
 
 install depencencies using "npm install" command
 
