@@ -1,20 +1,20 @@
 <template>
 	<!-- <MyGoals /> -->
 	<!-- <MonsterSlayer /> -->
-	<FriendContact />
+	<FriendsContact />
 </template>
 
 <script>
 	import MyGoals from './projects/addGoals/AddGoals.vue';
 	import MonsterSlayer from './projects/monsterSlayer/MonsterSlayer.vue';
-	import FriendContact from './projects/friendContactInfo/FriendContect.vue'
+	import FriendsContact from './projects/friendsContactInfo/FriendsContact.vue'
 
 	export default {
 		name: 'App',
 		components: {
 			MyGoals,
 			MonsterSlayer,
-			FriendContact
+			FriendsContact
 		},
 	};
 </script>

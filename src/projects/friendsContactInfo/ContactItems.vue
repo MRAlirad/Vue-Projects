@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: 'ContectItemm',
+        name: 'ContactItems',
         props: {
             name : String,
             info: String,
