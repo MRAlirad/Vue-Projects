@@ -1,14 +1,17 @@
 <template>
-	<MyGoals />
+	<!-- <MyGoals /> -->
+	<MonsterSlayer />
 </template>
 
 <script>
 	import MyGoals from './projects/addGoals/AddGoals.vue';
+	import MonsterSlayer from './projects/monsterSlayer/MonsterSlayer.vue';
 
 	export default {
 		name: 'App',
 		components: {
 			MyGoals,
+			MonsterSlayer,
 		},
 	};
 </script>
