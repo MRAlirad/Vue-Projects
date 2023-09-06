@@ -12,7 +12,7 @@
 <script>
 	export default {
 		name: 'Input',
-        emits: ['update:model'],
+		emits: ['update:model'],
 		props: {
 			label: String,
 			type: String,
