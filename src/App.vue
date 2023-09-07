@@ -7,7 +7,7 @@
 <script>
 	import MyGoals from './projects/addGoals/AddGoals.vue';
 	import MonsterSlayer from './projects/monsterSlayer/MonsterSlayer.vue';
-	import FriendsContact from './projects/friendsContactInfo/FriendsContact.vue';
+	import FriendsContact from './projects/friends-contact-info/FriendsContact.vue';
 
 	export default {
 		name: 'App',
