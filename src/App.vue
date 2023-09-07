@@ -1,13 +1,15 @@
 <template>
 	<!-- <MyGoals /> -->
 	<!-- <MonsterSlayer /> -->
-	<FriendsContact />
+	<!-- <FriendsContact /> -->
+	<LearningResourcesApp />
 </template>
 
 <script>
 	import MyGoals from './projects/addGoals/AddGoals.vue';
 	import MonsterSlayer from './projects/monsterSlayer/MonsterSlayer.vue';
 	import FriendsContact from './projects/friends-contact-info/FriendsContact.vue';
+	import LearningResourcesApp from './projects/learning-resources/LearningResourcesApp.vue';
 
 	export default {
 		name: 'App',
@@ -15,6 +17,7 @@
 			MyGoals,
 			MonsterSlayer,
 			FriendsContact,
+			LearningResourcesApp
 		},
 	};
 </script>
