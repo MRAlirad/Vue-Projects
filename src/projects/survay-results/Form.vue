@@ -84,7 +84,7 @@
 				}
 				this.invalidInput = false;
 
-				fetch('http://localhost:5000/survy', {
+				fetch('http://localhost:5000/survay', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',

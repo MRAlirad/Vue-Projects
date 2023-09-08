@@ -17,6 +17,7 @@
 				:key="id"
 				:name="name"
 				:rating="rating"
+				:id="id"
 			/>
 		</div>
 	</section>
