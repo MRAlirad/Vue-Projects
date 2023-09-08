@@ -97,6 +97,15 @@
 				<label for="how-other">Other</label>
 			</div>
 		</div>
+		<div class="form-control">
+			<input
+				type="checkbox"
+				id="confirm-terms"
+				name="confirm-terms"
+				v-model="confirm"
+			/>
+			<label for="confirm-terms">Agree to terms of use?</label>
+		</div>
 		<div>
 			<button type="submit">Save Data</button>
 		</div>
@@ -113,6 +122,7 @@
 				referrer: 'google',
 				interest: [],
 				how: null,
+				confirm: false,
 			};
 		},
 		methods: {
@@ -127,6 +137,8 @@
 				console.log('Radio buttons');
 				console.log(this.how);
 				this.how = null;
+				console.log(this.confirm);
+				this.confirm = false;
 			},
 		},
 	};
