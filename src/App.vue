@@ -23,7 +23,7 @@
 			FriendsContact,
 			LearningResourcesApp,
 			Form,
-			SurvayResultsApp
+			SurvayResultsApp,
 		},
 	};
 </script>

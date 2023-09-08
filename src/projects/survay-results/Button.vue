@@ -30,7 +30,8 @@
 		color: white;
 		padding: 0.5rem 2rem;
 		cursor: pointer;
-        border-radius: 5px;
+		border-radius: 5px;
+        width: max-content;
 	}
 
 	.btn:hover,

@@ -1,15 +1,18 @@
 <template>
 	<div class="survay-app">
 		<Form @survey-submit="StoreSurvay" />
+        <UserExperiences :results="savedSurveyResults" />
 	</div>
 </template>
 
 <script>
 	import Form from './Form.vue';
+	import UserExperiences from './UserExperiences.vue';
 	export default {
 		name: 'SurvayResultsApp',
 		components: {
 			Form,
+			UserExperiences,
 		},
 		data() {
 			return {
@@ -23,7 +26,7 @@
 					name: userName,
 					rating: rating,
 				});
-                console.log(this.savedSurveyResults)
+				console.log(this.savedSurveyResults);
 			},
 		},
 	};

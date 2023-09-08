@@ -118,8 +118,8 @@
 		margin-right: 10px;
 	}
 
-    .error-text {
-        color: red;
-        margin: 10px 0;
-    }
+	.error-text {
+		color: red;
+		margin: 10px 0;
+	}
 </style>
