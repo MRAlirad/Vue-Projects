@@ -48,6 +48,7 @@
 			>
 				One or more input fields are invalid. Please check your provided data.
 			</p>
+			<p v-show="error" class="error-text">{{ error }}</p>
 			<Button
 				text="Submit"
 				type="submit"
@@ -69,18 +70,21 @@
 				enteredName: '',
 				chosenRating: null,
 				invalidInput: false,
+				error: null,
 			};
 		},
 		emits: ['survey-submit'],
 		methods: {
 			submitSurvey() {
+				this.error = null;
+
 				if (this.enteredName === '' || !this.chosenRating) {
 					this.invalidInput = true;
 					return;
 				}
 				this.invalidInput = false;
 
-				fetch('http://localhost:5000/survay', {
+				fetch('http://localhost:5000/survy', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -89,7 +93,13 @@
 						name: this.enteredName,
 						rating: this.chosenRating,
 					}),
-				});
+				})
+					.then(response => {
+						if (!response.ok) throw new Error('Could not save data');
+					})
+					.catch(error => {
+						this.error = error.message;
+					});
 
 				this.enteredName = '';
 				this.chosenRating = null;

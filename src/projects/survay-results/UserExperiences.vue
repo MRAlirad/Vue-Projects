@@ -6,7 +6,7 @@
 			@on-click="loadExperiences"
 		/>
 		<p v-show="isLoading">Loading...</p>
-		<p v-show="!isLoading && error"> {{ error }}</p>
+		<p v-show="!isLoading && error">{{ error }}</p>
 		<p v-show="!isLoading && results.length === 0 && !error">No stored experience found! start adding some survay result</p>
 		<div
 			class="survay-result-conainer"
@@ -36,24 +36,30 @@
 			return {
 				results: [],
 				isLoading: false,
-				error : null,
+				error: null,
 			};
 		},
 		methods: {
 			async loadExperiences() {
 				this.isLoading = true;
 				this.error = null;
-				let response = await fetch('http://localhost:5000/survay');
-				if (response.ok && response.status === 200) {
-					let data = await response.json();
-					const results = [];
-					for (const { id, name, rating } of data) results.push({ id, name, rating });
-					this.results = results;
-				} else {
-					this.results = [];
-					this.error = 'faild to fetch data! please try again';
+				try {
+					let response = await fetch('http://localhost:5000/survay');
+					if (response.ok) {
+						let data = await response.json();
+						const results = [];
+						for (const { id, name, rating } of data) results.push({ id, name, rating });
+						this.results = results;
+						this.isLoading = false;
+					}
+					else
+					{
+						this.isLoading = false;
+						throw new Error('faild to fetch data! please try again');
+					}
+				} catch (error) {
+					this.error = error.message;
 				}
-				this.isLoading = false;
 			},
 		},
 		mounted() {

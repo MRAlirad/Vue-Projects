@@ -6,14 +6,9 @@
       "id": 1
     },
     {
-      "name": "Example Project",
-      "rating": "average",
-      "id": 2
-    },
-    {
-      "name": "df",
+      "name": "sdf",
       "rating": "poor",
-      "id": 3
+      "id": 2
     }
   ]
 }
