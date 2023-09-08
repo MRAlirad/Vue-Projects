@@ -72,6 +72,7 @@
 					name="how"
 					type="radio"
 					value="video"
+					v-model="how"
 				/>
 				<label for="how-video">Video Courses</label>
 			</div>
@@ -81,6 +82,7 @@
 					name="how"
 					type="radio"
 					value="blogs"
+					v-model="how"
 				/>
 				<label for="how-blogs">Blogs</label>
 			</div>
@@ -90,6 +92,7 @@
 					name="how"
 					type="radio"
 					value="other"
+					v-model="how"
 				/>
 				<label for="how-other">Other</label>
 			</div>
@@ -109,6 +112,7 @@
 				userAge: null,
 				referrer: 'google',
 				interest: [],
+				how: null,
 			};
 		},
 		methods: {
@@ -120,6 +124,9 @@
 				console.log(this.referrer);
 				console.log(this.interest);
 				this.interest = ['news'];
+				console.log('Radio buttons');
+				console.log(this.how);
+				this.how = null;
 			},
 		},
 	};
