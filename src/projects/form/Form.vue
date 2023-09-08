@@ -15,8 +15,8 @@
 				id="age"
 				name="age"
 				type="number"
-                v-model="userAge"
-                ref="ageInput"
+				v-model="userAge"
+				ref="ageInput"
 			/>
 		</div>
 		<div class="form-control">
@@ -24,7 +24,7 @@
 			<select
 				id="referrer"
 				name="referrer"
-                v-model="referrer"
+				v-model="referrer"
 			>
 				<option value="google">Google</option>
 				<option value="wom">Word of mouth</option>
@@ -39,6 +39,7 @@
 					name="interest"
 					type="checkbox"
 					value="news"
+					v-model="interest"
 				/>
 				<label for="interest-news">News</label>
 			</div>
@@ -48,6 +49,7 @@
 					name="interest"
 					type="checkbox"
 					value="tutorials"
+					v-model="interest"
 				/>
 				<label for="interest-tutorials">Tutorials</label>
 			</div>
@@ -57,6 +59,7 @@
 					name="interest"
 					type="checkbox"
 					value="nothing"
+					v-model="interest"
 				/>
 				<label for="interest-nothing">Nothing</label>
 			</div>
@@ -103,19 +106,21 @@
 		data() {
 			return {
 				userName: '',
-                userAge: null,
-                referrer: 'google',
+				userAge: null,
+				referrer: 'google',
+				interest: [],
 			};
 		},
 		methods: {
 			submitForm() {
-                console.log(this.userName);
-                this.userName = '',
-                console.log(this.userAge);
-                console.log(this.$refs.ageInput.value);
-                this.userAge = null;
-                console.log(this.referrer)
-            },
+				console.log(this.userName);
+				(this.userName = ''), console.log(this.userAge);
+				console.log(this.$refs.ageInput.value);
+				this.userAge = null;
+				console.log(this.referrer);
+				console.log(this.interest);
+				this.interest = ['news'];
+			},
 		},
 	};
 </script>
