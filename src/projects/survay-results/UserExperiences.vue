@@ -5,7 +5,11 @@
 			text="Load Submitted Experiences"
 			@on-click="loadExperiences"
 		/>
-		<div class="survay-result-conainer">
+		<p v-show="isLoading">Loading...</p>
+		<div
+			class="survay-result-conainer"
+			v-show="!isLoading"
+		>
 			<SurvayItem
 				v-for="{ id, name, rating } in results"
 				:key="id"
@@ -29,10 +33,12 @@
 		data() {
 			return {
 				results: [],
+				isLoading: false,
 			};
 		},
 		methods: {
 			async loadExperiences() {
+				this.isLoading = true;
 				let response = await fetch('http://localhost:5000/survay');
 				if (response.ok && response.status === 200) {
 					let data = await response.json();
@@ -40,6 +46,7 @@
 					for (const { id, name, rating } of data) results.push({ id, name, rating });
 					this.results = results;
 				} else alert('server error! please try again');
+				this.isLoading = false;
 			},
 		},
 		mounted() {
