@@ -42,6 +42,9 @@
 				} else alert('server error! please try again');
 			},
 		},
+		mounted() {
+			this.loadExperiences();
+		},
 	};
 </script>
 
