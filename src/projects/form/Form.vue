@@ -15,6 +15,8 @@
 				id="age"
 				name="age"
 				type="number"
+                v-model="userAge"
+                ref="ageInput"
 			/>
 		</div>
 		<div class="form-control">
@@ -100,11 +102,15 @@
 		data() {
 			return {
 				userName: '',
+                userAge: null,
 			};
 		},
 		methods: {
 			submitForm() {
-                console.log(this.userName)
+                console.log(this.userName);
+                this.userName = '',
+                console.log(this.userAge);
+                console.log(this.$refs.ageInput.value)
             },
 		},
 	};
