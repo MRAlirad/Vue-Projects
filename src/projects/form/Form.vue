@@ -102,6 +102,10 @@
 				<label for="how-other">Other</label>
 			</div>
 		</div>
+		<div class="form-cont">
+			<h2>how do you rate us?</h2>
+			<RatingControl v-model="rating" />
+		</div>
 		<div class="form-control">
 			<input
 				type="checkbox"
@@ -118,8 +122,13 @@
 </template>
 
 <script>
+	import RatingControl from './RatingControl.vue';
+
 	export default {
 		name: 'Form',
+		components: {
+			RatingControl,
+		},
 		data() {
 			return {
 				userName: '',
@@ -128,6 +137,7 @@
 				interest: [],
 				how: null,
 				confirm: false,
+				rating: null,
 				userNameValidity: 'pending',
 			};
 		},
@@ -145,6 +155,8 @@
 				this.how = null;
 				console.log(this.confirm);
 				this.confirm = false;
+				console.log(this.rating);
+				this.rating = null;
 			},
 			validateUserNameInput() {
 				if (this.userName === '') this.userNameValidity = 'invalid';
