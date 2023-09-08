@@ -80,9 +80,15 @@
 				}
 				this.invalidInput = false;
 
-				this.$emit('survey-submit', {
-					userName: this.enteredName,
-					rating: this.chosenRating,
+				fetch('http://localhost:5000/survay', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						name: this.enteredName,
+						rating: this.chosenRating,
+					}),
 				});
 
 				this.enteredName = '';

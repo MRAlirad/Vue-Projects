@@ -24,7 +24,6 @@
 		border: 1px solid #ccc;
 		padding: 1rem;
 		font-size: 1rem;
-		/* margin: 0.5rem 0; */
 	}
 
 	.highlight {

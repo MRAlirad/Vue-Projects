@@ -1,7 +1,10 @@
 <template>
 	<section class="user-experience-section">
 		<h2>Submitted Experiences</h2>
-		<Button text="Load Submitted Experiences" />
+		<Button
+			text="Load Submitted Experiences"
+			@on-click="loadExperiences"
+		/>
 		<div class="survay-result-conainer">
 			<SurvayItem
 				v-for="{ id, name, rating } in results"
@@ -18,11 +21,26 @@
 	import SurvayItem from './SurvayItem.vue';
 
 	export default {
-		props: ['results'],
 		name: 'UserExperiences',
 		components: {
 			Button,
 			SurvayItem,
+		},
+		data() {
+			return {
+				results: [],
+			};
+		},
+		methods: {
+			async loadExperiences() {
+				let response = await fetch('http://localhost:5000/survay');
+				if (response.ok && response.status === 200) {
+					let data = await response.json();
+					const results = [];
+					for (const { id, name, rating } of data) results.push({ id, name, rating });
+					this.results = results;
+				} else alert('server error! please try again');
+			},
 		},
 	};
 </script>
@@ -39,9 +57,9 @@
 		gap: 10px;
 	}
 
-    .survay-result-conainer {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+	.survay-result-conainer {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 </style>
