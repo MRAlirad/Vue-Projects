@@ -3,7 +3,8 @@
 	<!-- <MonsterSlayer /> -->
 	<!-- <FriendsContact /> -->
 	<!-- <LearningResourcesApp /> -->
-	<Form />
+	<!-- <Form /> -->
+	<SurvayResultsApp />
 </template>
 
 <script>
@@ -12,6 +13,7 @@
 	import FriendsContact from './projects/friends-contact-info/FriendsContact.vue';
 	import LearningResourcesApp from './projects/learning-resources/LearningResourcesApp.vue';
 	import Form from './projects/form/Form.vue';
+	import SurvayResultsApp from './projects/survay-results/SurvayResultsApp.vue';
 
 	export default {
 		name: 'App',
@@ -21,6 +23,7 @@
 			FriendsContact,
 			LearningResourcesApp,
 			Form,
+			SurvayResultsApp
 		},
 	};
 </script>
