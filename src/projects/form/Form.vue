@@ -24,6 +24,7 @@
 			<select
 				id="referrer"
 				name="referrer"
+                v-model="referrer"
 			>
 				<option value="google">Google</option>
 				<option value="wom">Word of mouth</option>
@@ -103,6 +104,7 @@
 			return {
 				userName: '',
                 userAge: null,
+                referrer: 'google',
 			};
 		},
 		methods: {
@@ -110,7 +112,9 @@
                 console.log(this.userName);
                 this.userName = '',
                 console.log(this.userAge);
-                console.log(this.$refs.ageInput.value)
+                console.log(this.$refs.ageInput.value);
+                this.userAge = null;
+                console.log(this.referrer)
             },
 		},
 	};
