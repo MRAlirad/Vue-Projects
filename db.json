@@ -1,14 +1,9 @@
 {
-	"survay": [
-		{
-			"name": "Mohammadreza",
-			"rating": "great",
-			"id": 1
-		},
-		{
-			"name": "5s64fd564f",
-			"rating": "poor",
-			"id": 5465
-		}
-	]
+  "survay": [
+    {
+      "name": "محمدرضا علی راد",
+      "rating": "poor",
+      "id": 1
+    }
+  ]
 }

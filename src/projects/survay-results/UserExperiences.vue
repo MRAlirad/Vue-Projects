@@ -6,9 +6,10 @@
 			@on-click="loadExperiences"
 		/>
 		<p v-show="isLoading">Loading...</p>
+		<p v-show="!isLoading && results.length === 0"> No stored experience found! start adding some survay result</p>
 		<div
 			class="survay-result-conainer"
-			v-show="!isLoading"
+			v-show="!isLoading && results.length > 0"
 		>
 			<SurvayItem
 				v-for="{ id, name, rating } in results"
