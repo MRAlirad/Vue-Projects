@@ -1,14 +1,20 @@
 <template>
 	<div class="users-teams-app">
 		<Navigation @set-page="setActivePage" />
+		<UserList v-if="activePage === 'users-list'" />
 	</div>
 </template>
 
 <script>
 	import Navigation from './Navigation.vue';
+	import UserList from './UserList.vue';
 
 	export default {
 		name: 'UsersTeamsApp',
+		components: {
+			Navigation,
+			UserList,
+		},
 		data() {
 			return {
 				activePage: 'teams-list',
@@ -31,9 +37,6 @@
 				teams: this.teams,
 				users: this.users,
 			};
-		},
-		components: {
-			Navigation,
 		},
 		methods: {
 			setActivePage(page) {

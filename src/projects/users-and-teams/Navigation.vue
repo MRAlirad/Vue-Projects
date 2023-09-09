@@ -20,8 +20,10 @@
 			Button,
 		},
 		emits: ['set-page'],
-		setActivePage(page) {
-			this.$emit('set-page', page);
+		methods: {
+			setActivePage(page) {
+				this.$emit('set-page', page);
+			},
 		},
 	};
 </script>
