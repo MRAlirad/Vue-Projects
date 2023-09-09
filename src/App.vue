@@ -4,7 +4,8 @@
 	<!-- <FriendsContact /> -->
 	<!-- <LearningResourcesApp /> -->
 	<!-- <Form /> -->
-	<SurvayResultsApp />
+	<!-- <SurvayResultsApp /> -->
+	<UsersTeamsApp />
 </template>
 
 <script>
@@ -14,6 +15,7 @@
 	import LearningResourcesApp from './projects/learning-resources/LearningResourcesApp.vue';
 	import Form from './projects/form/Form.vue';
 	import SurvayResultsApp from './projects/survay-results/SurvayResultsApp.vue';
+	import UsersTeamsApp from './projects/users-and-teams/UsersTeamsApp.vue';
 
 	export default {
 		name: 'App',
@@ -24,6 +26,7 @@
 			LearningResourcesApp,
 			Form,
 			SurvayResultsApp,
+			UsersTeamsApp,
 		},
 	};
 </script>
