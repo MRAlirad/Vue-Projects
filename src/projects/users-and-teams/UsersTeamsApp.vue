@@ -2,18 +2,21 @@
 	<div class="users-teams-app">
 		<Navigation @set-page="setActivePage" />
 		<UserList v-if="activePage === 'users-list'" />
+		<TeamsList v-if="activePage === 'teams-list'" />
 	</div>
 </template>
 
 <script>
 	import Navigation from './Navigation.vue';
 	import UserList from './UserList.vue';
+	import TeamsList from './TeamsList.vue';
 
 	export default {
 		name: 'UsersTeamsApp',
 		components: {
 			Navigation,
 			UserList,
+			TeamsList,
 		},
 		data() {
 			return {
