@@ -1,7 +1,13 @@
 <template>
 	<header>
-		<Button text="Teams" />
-		<Button text="Users" />
+		<Button
+			text="Teams"
+			@on-click="setActivePage('teams-list')"
+		/>
+		<Button
+			text="Users"
+			@on-click="setActivePage('users-list')"
+		/>
 	</header>
 </template>
 
@@ -12,6 +18,10 @@
 		name: 'Navigation',
 		components: {
 			Button,
+		},
+		emits: ['set-page'],
+		setActivePage(page) {
+			this.$emit('set-page', page);
 		},
 	};
 </script>
