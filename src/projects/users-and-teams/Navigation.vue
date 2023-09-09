@@ -2,13 +2,20 @@
 	<header>
 		<router-link to="/users">Users</router-link>
 		<router-link to="/teams">Teams</router-link>
-        
+		<Button
+			text="UsersPush"
+			@on-click="$router.push('/users')"
+		/>
 	</header>
 </template>
 
 <script>
+    import Button from './Button.vue';
 	export default {
 		name: 'Navigation',
+        components: {
+            Button,
+        }
 	};
 </script>
 

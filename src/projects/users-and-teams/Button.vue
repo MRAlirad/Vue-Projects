@@ -14,8 +14,8 @@ export default {
 }
 </script>
 
-<style>
-	.btn {
+<style scoped>
+	/* .btn {
 		font: inherit;
 		background: transparent;
 		border: 1px solid transparent;
@@ -30,5 +30,5 @@ export default {
 		color: #f1a80a;
 		border-color: #f1a80a;
 		background-color: #1a037e;
-	}
+	} */
 </style>
