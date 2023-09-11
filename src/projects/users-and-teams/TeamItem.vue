@@ -14,7 +14,15 @@
 			teamMembersLink() {
 				// return `/teams/${this.id}`;
 				// this.$router.push({ name: 'team-members', params: { teamId: this.id } });
-				return { name: 'team-members', params: { teamId: this.id } };
+				return {
+					name: 'team-members',
+					params: {
+						teamId: this.id,
+					},
+					query: {
+						sort: 'asc',
+					},
+				};
 			},
 		},
 	};
