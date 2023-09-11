@@ -1,4 +1,5 @@
 <template>
+	<router-view></router-view>
 	<div class="teams-list">
 		<TeamsItem
 			v-for="{id, name, members} in teams"
