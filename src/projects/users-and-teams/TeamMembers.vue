@@ -31,12 +31,11 @@
 			const selectedTeam = this.teams.find(team => team.id === teamId);
 			const members = selectedTeam.members;
 			const selectedMembers = [];
-			for(const member of members)
-			{
+			for (const member of members) {
 				const selectedUser = this.users.find(user => user.id === member);
-				selectedMembers.push(selectedUser)
+				selectedMembers.push(selectedUser);
 			}
-			this.teamName = selectedTeam.name
+			this.teamName = selectedTeam.name;
 			this.members = selectedMembers;
 		},
 	};

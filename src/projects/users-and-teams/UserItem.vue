@@ -15,10 +15,8 @@
 		props: ['name', 'role'],
 		computed: {
 			roleClass() {
-				if (this.role === 'Engineer')
-					return 'role--engineer';
-				if (this.role === 'Consultant')
-					return 'role--consultant';
+				if (this.role === 'Engineer') return 'role--engineer';
+				if (this.role === 'Consultant') return 'role--consultant';
 				return null;
 			},
 		},

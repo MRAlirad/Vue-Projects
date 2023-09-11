@@ -1,6 +1,6 @@
 <template>
 	<div class="users-teams-app">
-		<Navigation/>
+		<Navigation />
 		<router-view></router-view>
 	</div>
 </template>

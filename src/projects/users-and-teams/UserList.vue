@@ -1,19 +1,24 @@
 <template>
 	<div class="users-list">
-        <UserItem v-for="user in users" :key="user.id" :name="user.fullName" :role="user.role"/>
-    </div>
+		<UserItem
+			v-for="user in users"
+			:key="user.id"
+			:name="user.fullName"
+			:role="user.role"
+		/>
+	</div>
 </template>
 
 <script>
 	import UserItem from './UserItem.vue';
 
 	export default {
-        name: 'UserList',
+		name: 'UserList',
 		components: {
 			UserItem,
 		},
 		inject: ['users'],
-    };
+	};
 </script>
 
 <style scoped>
