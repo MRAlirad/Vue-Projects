@@ -64,4 +64,9 @@ router.beforeEach((to, from, next) =>
     next(true);
 });
 
+router.afterEach((to, from) =>
+{
+    // sending analytics data
+});
+
 createApp(App).use(router).mount('#app');
