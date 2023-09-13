@@ -41,8 +41,7 @@ const router = createRouter({
         // {path: '/:notFound(.*)', redirect: '/teams'},
         {path: '/:notFound(.*)', component: NotFound},
     ],
-    scrollBehavior(to, from, savedPosition)
-    {
+    scrollBehavior(to, from, savedPosition){
         if (savedPosition)
             return savedPosition;
         return {left: 0, top: 0};
