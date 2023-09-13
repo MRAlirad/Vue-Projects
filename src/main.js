@@ -1,8 +1,8 @@
 import {createApp} from 'vue';
 import './style.css';
 import App from './App.vue';
-import router from './routes';
+import teamUsersRouter from './projects/users-and-teams/routes.js';
 
 
 
-createApp(App).use(router).mount('#app');
+createApp(App).use(teamUsersRouter).mount('#app');

@@ -1,12 +1,12 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import UserList from './projects/users-and-teams/UserList.vue';
-import TeamsList from './projects/users-and-teams/TeamsList.vue';
-import TeamMembers from './projects/users-and-teams/TeamMembers.vue';
-import NotFound from './projects/users-and-teams/NotFound.vue';
-import TeamFooter from './projects/users-and-teams/TeamFooter.vue';
-import UsersFooter from './projects/users-and-teams/UsersFooter.vue';
+import UserList from './UserList.vue';
+import TeamsList from './TeamsList.vue';
+import TeamMembers from './TeamMembers.vue';
+import NotFound from './NotFound.vue';
+import TeamFooter from './TeamFooter.vue';
+import UsersFooter from './UsersFooter.vue';
 
-const router = createRouter({
+const teamUsersRouter = createRouter({
     history: createWebHistory(),
     routes: [
         {path: '/', redirect: '/teams'},
@@ -50,7 +50,7 @@ const router = createRouter({
     }
 });
 
-router.beforeEach((to, from, next) =>
+teamUsersRouter.beforeEach((to, from, next) =>
 {
     // console.log(to, from)
     // if (to.name === 'team-members')
@@ -65,9 +65,9 @@ router.beforeEach((to, from, next) =>
     next(true);
 });
 
-router.afterEach((to, from) =>
+teamUsersRouter.afterEach((to, from) =>
 {
     // sending analytics data
 });
 
-export default router;
+export default teamUsersRouter;
