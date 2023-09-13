@@ -17,6 +17,7 @@ const router = createRouter({
         {
             name: 'teams',
             path: '/teams',
+            meta: {needsAuth: true},
             components: {
                 default: TeamsList,
                 footer: TeamFooter,
@@ -61,6 +62,10 @@ router.beforeEach((to, from, next) =>
     // else
     //     next({name: 'team-members', params: {teamId: 't2'}});
     // next(false);
+
+    if(to.meta.needsAuth)
+        console.log('needs auth!');
+
     next(true);
 });
 
