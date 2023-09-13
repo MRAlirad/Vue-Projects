@@ -7,6 +7,8 @@ import UserList from './projects/users-and-teams/UserList.vue';
 import TeamsList from './projects/users-and-teams/TeamsList.vue';
 import TeamMembers from './projects/users-and-teams/TeamMembers.vue';
 import NotFound from './projects/users-and-teams/NotFound.vue';
+import TeamFooter from './projects/users-and-teams/TeamFooter.vue';
+import UsersFooter from './projects/users-and-teams/UsersFooter.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,7 +17,10 @@ const router = createRouter({
         {
             name: 'teams',
             path: '/teams',
-            component: TeamsList,
+            components: {
+                default: TeamsList,
+                footer: TeamFooter,
+            },
             children: [
                 {
                     name: 'team-members',
@@ -26,7 +31,13 @@ const router = createRouter({
             ],
         },
         // {path: '/teams', component: TeamsList , alias: '/'},
-        {path: '/users', component: UserList},
+        {
+            path: '/users',
+            components: {
+                default: UserList,
+                footer: UsersFooter
+            }
+        },
         // {path: '/:notFound(.*)', redirect: '/teams'},
         {path: '/:notFound(.*)', component: NotFound},
     ],

@@ -1,7 +1,12 @@
 <template>
 	<div class="users-teams-app">
 		<Navigation />
-		<router-view></router-view>
+		<main>
+			<router-view></router-view>
+		</main>
+		<footer>
+			<router-view name="footer"></router-view>
+		</footer>
 	</div>
 </template>
 
@@ -49,5 +54,17 @@
 
 	body {
 		margin: 0;
+	}
+
+	footer {
+		width: 100%;
+		height: 5rem;
+		background-color: #11005c;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		color: white;
+		font-size: 25px;
 	}
 </style>
