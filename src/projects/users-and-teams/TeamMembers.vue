@@ -43,7 +43,11 @@
 		},
 		created() {
 			this.loadTeamMembers(this.teamId);
-			console.log(this.$route.query)
+			console.log(this.$route.query);
+		},
+		beforeRouteUpdate(to, from, next) {
+			// this.loadTeamMembers(to.params.teamId);
+			next();
 		},
 		watch: {
 			teamId(newId) {

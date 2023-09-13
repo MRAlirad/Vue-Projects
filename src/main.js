@@ -21,6 +21,10 @@ const router = createRouter({
                 default: TeamsList,
                 footer: TeamFooter,
             },
+            beforeEnter(to, from, next)
+            {
+                next();
+            },
             children: [
                 {
                     name: 'team-members',

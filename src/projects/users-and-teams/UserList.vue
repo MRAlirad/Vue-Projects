@@ -17,6 +17,9 @@
 		components: {
 			UserItem,
 		},
+		beforeRouteEnter(to, from, next){
+			next();
+		},
 		inject: ['users'],
 	};
 </script>
