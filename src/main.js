@@ -26,7 +26,7 @@ const router = createRouter({
                     name: 'team-members',
                     path: ':teamId',
                     component: TeamMembers,
-                    props: true
+                    props: true,
                 },
             ],
         },
@@ -41,6 +41,12 @@ const router = createRouter({
         // {path: '/:notFound(.*)', redirect: '/teams'},
         {path: '/:notFound(.*)', component: NotFound},
     ],
+    scrollBehavior(to, from, savedPosition)
+    {
+        if (savedPosition)
+            return savedPosition;
+        return {left: 0, top: 0};
+    }
 });
 
 createApp(App).use(router).mount('#app');
