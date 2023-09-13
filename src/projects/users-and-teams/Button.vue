@@ -1,21 +1,26 @@
 <template>
-    <button class="btn" @click="$emit('on-click')">
-        {{ text }}
-    </button>
+	<button
+		class="btn"
+		:class="{ active: active }"
+		@click="$emit('on-click')"
+	>
+		{{ text }}
+	</button>
 </template>
 
 <script>
-export default {
-    name: 'Button',
-    props: {
-        text: String,
-    },
-    emits: ['on-click'],
-}
+	export default {
+		name: 'Button',
+		props: {
+			text: String,
+			active: Boolean,
+		},
+		emits: ['on-click'],
+	};
 </script>
 
 <style scoped>
-	/* .btn {
+	.btn {
 		font: inherit;
 		background: transparent;
 		border: 1px solid transparent;
@@ -26,9 +31,9 @@ export default {
 	}
 
 	.btn:hover,
-	.btn:active {
+	.btn.active {
 		color: #f1a80a;
 		border-color: #f1a80a;
 		background-color: #1a037e;
-	} */
+	}
 </style>
