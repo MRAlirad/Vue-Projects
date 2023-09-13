@@ -41,11 +41,23 @@ const router = createRouter({
         // {path: '/:notFound(.*)', redirect: '/teams'},
         {path: '/:notFound(.*)', component: NotFound},
     ],
-    scrollBehavior(to, from, savedPosition){
+    scrollBehavior(to, from, savedPosition)
+    {
         if (savedPosition)
             return savedPosition;
         return {left: 0, top: 0};
     }
+});
+
+router.beforeEach((to, from, next) =>
+{
+    // console.log(to, from)
+    // if (to.name === 'team-members')
+    //     next();
+    // else
+    //     next({name: 'team-members', params: {teamId: 't2'}});
+    // next(false);
+    next(true);
 });
 
 createApp(App).use(router).mount('#app');
