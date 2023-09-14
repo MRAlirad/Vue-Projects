@@ -15,6 +15,8 @@
 			@before-leave="beforeLeave"
 			@leave="leave"
 			@after-leave="afterLeave"
+			@enter-cancelled="enterCanceled"
+			@leave-cancelled="leaveCanceled"
 		>
 			<p v-if="paraIsVisible">This is only sth visible!!!</p>
 		</transition>
@@ -64,28 +66,48 @@
 				dialogIsVisible: false,
 				paraIsVisible: false,
 				userIsVisible: false,
+				enterInterval: null,
+				leaveInterval: null,
 			};
 		},
 		methods: {
-			beforeEnter(element) {
-				console.log('beforeEnter');
-				console.log(element);
+			enterCanceled() {
+				clearInterval(this.enterInterval);
 			},
-			enter(element) {
-				console.log('enter');
-				console.log(element);
+			leaveCanceled() {
+				clearInterval(this.leaveInterval);
+			},
+			beforeEnter(element) {
+				element.style.opacity = 0;
+			},
+			enter(element, done) {
+				let round = 1;
+				this.enterInterval = setInterval(() => {
+					element.style.opacity = round * 0.01;
+					round++;
+					if (round > 100) {
+						clearInterval(this.enterInterval);
+						done();
+					}
+				}, 20);
 			},
 			afterEnter(element) {
 				console.log('afterEnter');
 				console.log(element);
 			},
 			beforeLeave(element) {
-				console.log('beforeLeave');
-				console.log(element);
+				element.style.opacity = 1;
 			},
-			leave(element) {
-				console.log('leave');
-				console.log(element);
+			leave(element, done) {
+				let round = 1;
+				this.leaveInterval = setInterval(() => {
+					element.style.opacity = 1 - round * 0.01;
+					round++;
+					if (round > 100) {
+						clearInterval(this.leaveInterval);
+						done();
+					}
+				}, 20);
 			},
 			afterLeave(element) {
 				console.log('afterLeave');
@@ -172,7 +194,7 @@
 	}
 
 	/* para animation */
-	.para-enter-from {
+	/* .para-enter-from {
 		opacity: 0;
 		transform: translateX(-30px);
 	}
@@ -198,7 +220,7 @@
 	.para-leave-to {
 		opacity: 0;
 		transform: translateX(30px);
-	}
+	} */
 
 	/* button animaiton */
 	.fade-button-enter-from,
