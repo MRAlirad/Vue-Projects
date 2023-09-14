@@ -7,13 +7,24 @@
 		<button @click="animateBlock">Animate</button>
 	</div>
 	<div class="container">
-		<transition name="para">
+		<transition
+			name="para"
+			@before-enter="beforeEnter"
+			@enter="enter"
+			@after-enter="afterEnter"
+			@before-leave="beforeLeave"
+			@leave="leave"
+			@after-leave="afterLeave"
+		>
 			<p v-if="paraIsVisible">This is only sth visible!!!</p>
 		</transition>
 		<button @click="togglePara">Toggle para</button>
 	</div>
 	<div class="container">
-		<transition name="fade-button" mode="out-in">
+		<transition
+			name="fade-button"
+			mode="out-in"
+		>
 			<button
 				@click="showUsers"
 				v-if="!userIsVisible"
@@ -56,6 +67,30 @@
 			};
 		},
 		methods: {
+			beforeEnter(element){
+				console.log('beforeEnter')
+				console.log(element)
+			},
+			enter(element){
+				console.log('enter')
+				console.log(element)
+			},
+			afterEnter(element){
+				console.log('afterEnter')
+				console.log(element)
+			},
+			beforeLeave(element){
+				console.log('beforeLeave')
+				console.log(element)
+			},
+			leave(element){
+				console.log('leave')
+				console.log(element)
+			},
+			afterLeave(element){
+				console.log('afterLeave')
+				console.log(element)
+			},
 			showUsers() {
 				this.userIsVisible = true;
 			},
