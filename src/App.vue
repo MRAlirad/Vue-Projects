@@ -6,7 +6,8 @@
 	<!-- <Form /> -->
 	<!-- <SurvayResultsApp /> -->
 	<!-- <UsersTeamsApp /> -->
-	<Animation />
+	<!-- <Animation /> -->
+	<VuexApp />
 </template>
 
 <script>
@@ -17,7 +18,8 @@
 	// import Form from './projects/form/Form.vue';
 	// import SurvayResultsApp from './projects/survay-results/SurvayResultsApp.vue';
 	// import UsersTeamsApp from './projects/users-and-teams/UsersTeamsApp.vue';
-	import Animation from './projects/animation/Animation.vue';
+	// import Animation from './projects/animation/Animation.vue';
+	import VuexApp from './projects/vuex/VuexApp.vue';
 
 	export default {
 		name: 'App',
@@ -29,7 +31,8 @@
 			// Form,
 			// SurvayResultsApp,
 			// UsersTeamsApp,
-			Animation,
+			// Animation,
+			VuexApp
 		},
 	};
 </script>
