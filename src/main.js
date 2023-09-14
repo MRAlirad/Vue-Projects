@@ -4,17 +4,35 @@ import App from './App.vue';
 // import teamUsersRouter from './projects/users-and-teams/routes.js';
 import {createStore} from 'vuex';
 const store = createStore({
-    state() {
+    state()
+    {
         return {
             counter: 0,
         };
     },
     mutations: {
-        increment(state){
+        increment(state)
+        {
             state.counter++;
         },
-        increase(state, payload) {
+        increase(state, payload)
+        {
             state.counter = state.counter + payload.value;
+        }
+    },
+    getters: {
+        finalCounter(state)
+        {
+            return state.counter * 3;
+        },
+        normalizedCounter(state, getters)
+        {
+            const finalCounter = getters.finalCounter;
+            if (finalCounter < 0)
+                return 0;
+            else if (finalCounter > 100)
+                return 100;
+            return finalCounter;
         }
     }
 });
@@ -22,6 +40,6 @@ const store = createStore({
 
 
 createApp(App)
-// .use(teamUsersRouter)
-.use(store)
-.mount('#app');
+    // .use(teamUsersRouter)
+    .use(store)
+    .mount('#app');
