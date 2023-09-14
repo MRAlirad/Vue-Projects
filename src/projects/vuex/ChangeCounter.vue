@@ -11,7 +11,7 @@
 			// addOne() {
 			// 	this.$store.commit('increment');
 			// },
-			...mapActions(['increment', 'increase'])
+			...mapActions('counter',['increment', 'increase'])
 			// ...mapActions({
 			// 	inc: 'increment',
 			// 	incr: 'increase',
