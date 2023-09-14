@@ -12,6 +12,22 @@
 		</transition>
 		<button @click="togglePara">Toggle para</button>
 	</div>
+	<div class="container">
+		<transition name="fade-button" mode="out-in">
+			<button
+				@click="showUsers"
+				v-if="!userIsVisible"
+			>
+				Show Users
+			</button>
+			<button
+				@click="hideUsers"
+				v-else
+			>
+				Hide Users
+			</button>
+		</transition>
+	</div>
 	<base-modal
 		@close="hideDialog"
 		:open="dialogIsVisible"
@@ -36,9 +52,16 @@
 				animatedBlock: false,
 				dialogIsVisible: false,
 				paraIsVisible: false,
+				userIsVisible: false,
 			};
 		},
 		methods: {
+			showUsers() {
+				this.userIsVisible = true;
+			},
+			hideUsers() {
+				this.userIsVisible = false;
+			},
 			animateBlock() {
 				this.animatedBlock = true;
 			},
@@ -113,7 +136,7 @@
 		}
 	}
 
-	/* vue animation */
+	/* para animation */
 	.para-enter-from {
 		opacity: 0;
 		transform: translateX(-30px);
@@ -140,5 +163,21 @@
 	.para-leave-to {
 		opacity: 0;
 		transform: translateX(30px);
+	}
+
+	/* button animaiton */
+	.fade-button-enter-from,
+	.fade-button-leave-to {
+		opacity: 0;
+	}
+	.fade-button-enter-active {
+		transition: opacity 0.3s ease-out;
+	}
+	.fade-button-leave-active {
+		transition: opacity 0.3s ease-in;
+	}
+	.fade-button-enter-to,
+	.fade-button-leave-from {
+		opacity: 1;
 	}
 </style>

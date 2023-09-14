@@ -5,7 +5,10 @@
 		v-if="open"
 	></div>
 	<transition name="modal">
-		<dialog open v-if="open">
+		<dialog
+			open
+			v-if="open"
+		>
 			<slot></slot>
 		</dialog>
 	</transition>
@@ -14,7 +17,7 @@
 <script>
 	export default {
 		emits: ['close'],
-		props: ['open']
+		props: ['open'],
 	};
 </script>
 
