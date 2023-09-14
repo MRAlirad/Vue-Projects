@@ -14,7 +14,7 @@
 	</div>
 	<base-modal
 		@close="hideDialog"
-		v-if="dialogIsVisible"
+		:open="dialogIsVisible"
 	>
 		<p>This is a test dialog!</p>
 		<button @click="hideDialog">Close it!</button>
