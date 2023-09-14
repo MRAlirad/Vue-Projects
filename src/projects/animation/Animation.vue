@@ -7,7 +7,7 @@
 		<button @click="animateBlock">Animate</button>
 	</div>
 	<div class="container">
-		<transition>
+		<transition name="para">
 			<p v-if="paraIsVisible">This is only sth visible!!!</p>
 		</transition>
 		<button @click="togglePara">Toggle para</button>
@@ -114,33 +114,31 @@
 	}
 
 	/* vue animation */
-	/* .v-enter-from {
+	.para-enter-from {
 		opacity: 0;
 		transform: translateX(-30px);
-	} */
-
-	.v-enter-active {
-		/* transition: all 0.3s ease-out; */
-		animation: slide-scale 0.3s ease-out;
 	}
 
-	/* .v-enter-to {
-		opacity: 1;
-		transform: translateX(0);
-	} */
-
-	/* .v-leave-from {
-		opacity: 1;
-		transform: translateX(0);
-	} */
-
-	.v-leave-active {
-		/* transition: all 0.3s ease-out; */
-		animation: slide-scale 0.3s ease-out;
+	.para-enter-active {
+		transition: all 0.3s ease-out;
 	}
 
-	/* .v-leave-to {
+	.para-enter-to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.para-leave-from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.para-leave-active {
+		transition: all 0.3s ease-out;
+	}
+
+	.para-leave-to {
 		opacity: 0;
 		transform: translateX(30px);
-	} */
+	}
 </style>
