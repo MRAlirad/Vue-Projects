@@ -3,12 +3,12 @@ import './style.css';
 import App from './App.vue';
 // import teamUsersRouter from './projects/users-and-teams/routes.js';
 import {createStore} from 'vuex';
-const store = createStore({
+
+const counterModule = {
     state()
     {
         return {
             counter: 0,
-            isLogedIn: false,
         };
     },
     mutations: {
@@ -20,10 +20,6 @@ const store = createStore({
         {
             state.counter = state.counter + payload.value;
         },
-        setAuth(state, payload)
-        {
-            state.isLogedIn = payload.isAuth;
-        }
     },
     actions: {
         increment(context, payload)
@@ -36,14 +32,6 @@ const store = createStore({
             {
                 context.commit('increase', payload);
             }, 2000);
-        },
-        login(context)
-        {
-            context.commit('setAuth', {isAuth: true});
-        },
-        logout(context)
-        {
-            context.commit('setAuth', {isAuth: false});
         },
     },
     getters: {
@@ -60,11 +48,45 @@ const store = createStore({
                 return 100;
             return finalCounter;
         },
+    }
+};
+
+const authModule = {
+    state()
+    {
+        return {
+            isLogedIn: false,
+        };
+    },
+    mutations: {
+        setAuth(state, payload)
+        {
+            state.isLogedIn = payload.isAuth;
+        }
+    },
+    actions: {
+        login(context)
+        {
+            context.commit('setAuth', {isAuth: true});
+        },
+        logout(context)
+        {
+            context.commit('setAuth', {isAuth: false});
+        },
+    },
+    getters: {
         userIsAuthenticated(state)
         {
             return state.isLogedIn;
         },
     }
+}
+
+const store = createStore({
+    modules: {
+        counter: counterModule,
+        auth: authModule
+    },
 });
 
 
