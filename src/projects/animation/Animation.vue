@@ -6,6 +6,12 @@
 		></div>
 		<button @click="animateBlock">Animate</button>
 	</div>
+	<div class="container">
+		<transition>
+			<p v-if="paraIsVisible">This is only sth visible!!!</p>
+		</transition>
+		<button @click="togglePara">Toggle para</button>
+	</div>
 	<base-modal
 		@close="hideDialog"
 		v-if="dialogIsVisible"
@@ -29,11 +35,15 @@
 			return {
 				animatedBlock: false,
 				dialogIsVisible: false,
+				paraIsVisible: false,
 			};
 		},
 		methods: {
 			animateBlock() {
 				this.animatedBlock = true;
+			},
+			togglePara() {
+				this.paraIsVisible = !this.paraIsVisible;
 			},
 			showDialog() {
 				this.dialogIsVisible = true;
@@ -91,7 +101,6 @@
 		/* transform: translateX(-150px); */
 		animation: slide-fade 0.3s ease-out forwards;
 	}
-
 	@keyframes slide-fade {
 		0% {
 			transform: translateX(0) scale(1);
@@ -102,5 +111,34 @@
 		100% {
 			transform: translateX(-150px) scale(1);
 		}
+	}
+
+	/* vue animation */
+	.v-enter-from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+
+	.v-enter-active {
+		transition: all 0.3s ease-out;
+	}
+
+	.v-enter-to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.v-leave-from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.v-leave-active {
+		transition: all 0.3s ease-out;
+	}
+
+	.v-leave-to {
+		opacity: 0;
+		transform: translateX(30px);
 	}
 </style>
