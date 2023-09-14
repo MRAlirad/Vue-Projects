@@ -99,9 +99,9 @@
 	}
 	.animate {
 		/* transform: translateX(-150px); */
-		animation: slide-fade 0.3s ease-out forwards;
+		animation: slide-scale 0.3s ease-out forwards;
 	}
-	@keyframes slide-fade {
+	@keyframes slide-scale {
 		0% {
 			transform: translateX(0) scale(1);
 		}
@@ -114,31 +114,33 @@
 	}
 
 	/* vue animation */
-	.v-enter-from {
+	/* .v-enter-from {
 		opacity: 0;
 		transform: translateX(-30px);
-	}
+	} */
 
 	.v-enter-active {
-		transition: all 0.3s ease-out;
+		/* transition: all 0.3s ease-out; */
+		animation: slide-scale 0.3s ease-out;
 	}
 
-	.v-enter-to {
+	/* .v-enter-to {
 		opacity: 1;
 		transform: translateX(0);
-	}
+	} */
 
-	.v-leave-from {
+	/* .v-leave-from {
 		opacity: 1;
 		transform: translateX(0);
-	}
+	} */
 
 	.v-leave-active {
-		transition: all 0.3s ease-out;
+		/* transition: all 0.3s ease-out; */
+		animation: slide-scale 0.3s ease-out;
 	}
 
-	.v-leave-to {
+	/* .v-leave-to {
 		opacity: 0;
 		transform: translateX(30px);
-	}
+	} */
 </style>
